@@ -1,16 +1,15 @@
-import './HomePage.css';
-import { Header } from '../components/Header';
-import products from '../../starting-code/backend/products.json';
+import "./HomePage.css";
+import axios from "axios";
+import { Header } from "../components/Header";
+import products from "../../starting-code/backend/products.json";
 
 export function HomePage() {
-
-  fetch('http://localhost:3000/api/products')
-  .then(()=>{
-    console.log('fetching products')
-  })
+  axios.get("http://localhost:3000/api/products").then((response) => {
+    console.log(response.data);
+  });
   return (
     <>
-      <title>Ecommerce Project</title>
+      <title>E-Commerce Project</title>
       <Header />
 
       <div className="home-page">
@@ -70,8 +69,6 @@ export function HomePage() {
               </div>
             );
           })}
-
-          
         </div>
       </div>
     </>

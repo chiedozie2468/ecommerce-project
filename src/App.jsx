@@ -1,17 +1,27 @@
-import { Routes, Route } from 'react-router-dom';
-import { HomePage } from './pages/HomePage';
-import { CheckoutPage } from './pages/CheckoutPage';
-import { OrdersPage } from './pages/OrdersPage';
-import { TrackPage } from './pages/TrackPage';
+import { Routes, Route } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { CheckoutPage } from "./pages/CheckoutPage";
+import { OrdersPage } from "./pages/OrdersPage";
+import { TrackPage } from "./pages/TrackPage";
+import { useEffect, useState } from "react";
 
+import axios from "axios";
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/cart-items").then((response) => {
+      setCart(response.data);
+    });
+  }, []);
+
   return (
     <Routes>
-      <Route index element={<HomePage />} />
+      <Route index element={<HomePage cart={cart} />} />
       <Route path="checkout" element={<CheckoutPage />} />
-      <Route path='orders' element={<OrdersPage />} />
-      <Route path='track' element={<TrackPage />} />
+      <Route path="orders" element={<OrdersPage />} />
+      <Route path="track" element={<TrackPage />} />
     </Routes>
   );
 }

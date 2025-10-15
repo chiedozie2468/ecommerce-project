@@ -28,7 +28,6 @@ export default [
         "warn",
         { allowConstantExport: true },
       ],
-      "react-refresh/sort-comp": "warn",
       "react/prop-types": "off",
     },
   },

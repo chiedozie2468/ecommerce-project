@@ -3,6 +3,11 @@ import { Header } from '../components/Header';
 import products from '../../starting-code/backend/products.json';
 
 export function HomePage() {
+
+  fetch('http://localhost:3000/api/products')
+  .then(()=>{
+    console.log('fetching products')
+  })
   return (
     <>
       <title>Ecommerce Project</title>

@@ -1,9 +1,10 @@
 import React from "react";
 import { formatMoney } from "../../utils/money";
+import dayjs from "dayjs";
 //import dayjs from "dayjs";
 import { DeliveryOptions } from "./DeliveryOptions";
 
-export function OrderSummery({ cart, deliveryOptions }) {
+export function OrderSummery({ cart, deliveryOptions, loadCart }) {
   return (
     <div className="order-summary">
       {deliveryOptions.length > 0 &&
@@ -11,7 +12,12 @@ export function OrderSummery({ cart, deliveryOptions }) {
           return (
             <div key={cartItem.productId} className="cart-item-container">
               <div className="delivery-date">
-                Delivery date: Tuesday, June 21
+                Delivery date:{" "}
+                {dayjs(
+                  deliveryOptions.find(
+                    (option) => option.id === cartItem.deliveryOptionId
+                  )?.estimatedDeliveryTimeMs
+                ).format("dddd, MMMM D")}
               </div>
 
               <div className="cart-item-details-grid">
@@ -42,6 +48,7 @@ export function OrderSummery({ cart, deliveryOptions }) {
                 <DeliveryOptions
                   deliveryOptions={deliveryOptions}
                   cartItem={cartItem}
+                  loadCart={loadCart}
                 />
               </div>
             </div>

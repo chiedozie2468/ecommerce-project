@@ -4,7 +4,6 @@ import axios from "axios";
 
 export function Product({ product, loadCart }) {
   const [quantity, setQuantity] = useState(1);
-  const [message, setMessage] = useState("");
 
   const addToCart = async () => {
     await axios.post("/api/cart-items", {

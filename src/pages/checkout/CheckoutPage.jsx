@@ -10,31 +10,30 @@ export function CheckoutPage({ cart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
 
- useEffect(() => {
-  const fetchDeliveryOptions = async () => {
-    try {
-      const response = await axios.get(
-        "/api/delivery-options?expand=estimatedDeliveryTime"
-      );
-      setDeliveryOptions(response.data);
-    } catch (error) {
-      console.error("Failed to fetch delivery options:", error);
-    }
-  };
+  useEffect(() => {
+    const fetchDeliveryOptions = async () => {
+      try {
+        const response = await axios.get(
+          "/api/delivery-options?expand=estimatedDeliveryTime"
+        );
+        setDeliveryOptions(response.data);
+      } catch (error) {
+        console.error("Failed to fetch delivery options:", error);
+      }
+    };
 
-  const fetchPaymentSummary = async () => {
-    try {
-      const response = await axios.get("/api/payment-summary");
-      setPaymentSummary(response.data);
-    } catch (error) {
-      console.error("Failed to fetch payment summary:", error);
-    }
-  };
+    const fetchPaymentSummary = async () => {
+      try {
+        const response = await axios.get("/api/payment-summary");
+        setPaymentSummary(response.data);
+      } catch (error) {
+        console.error("Failed to fetch payment summary:", error);
+      }
+    };
 
-  fetchDeliveryOptions();
-  fetchPaymentSummary();
-}, []);
-
+    fetchDeliveryOptions();
+    fetchPaymentSummary();
+  }, []);
 
   return (
     <div>

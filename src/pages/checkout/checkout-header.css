@@ -2,7 +2,8 @@
   height: 60px;
   padding-left: 30px;
   padding-right: 30px;
-  background-color: white;
+  background-color: #0b0b2c; /* ✅ Dark navy background */
+  color: white; /* ✅ Make all text white by default */
 
   display: flex;
   justify-content: center;
@@ -12,18 +13,31 @@
   left: 0;
   right: 0;
   z-index: 1000;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* ✅ Subtle shadow for depth */
 }
 
 .checkout-header .header-content {
   width: 100%;
   max-width: 1100px;
-
   display: flex;
   align-items: center;
 }
 
 .checkout-header .checkout-header-left-section {
   width: 200px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.checkout-header .checkout-header-left-section a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.checkout-header .checkout-header-left-section span {
+  color: #4da3ff; /* ✅ Accent blue on "Click" */
 }
 
 .checkout-header .logo {
@@ -35,10 +49,6 @@
   display: none;
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 575px or less, different
-   styles (inside the {...}) will be applied. */
 @media (max-width: 575px) {
   .checkout-header .checkout-header-left-section {
     width: auto;
@@ -58,19 +68,22 @@
   flex: 1;
   flex-shrink: 0;
   text-align: center;
-
   font-size: 22px;
   font-weight: 500;
-
   display: flex;
   justify-content: center;
+  color: white; /* ✅ Make text white */
 }
 
 .checkout-header .return-to-home-link {
-  color: rgb(25, 135, 84);
-
+  color: #4da3ff; /* ✅ Accent link color */
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.checkout-header .return-to-home-link:hover {
+  color: #7fbfff; /* ✅ Lighter on hover */
 }
 
 @media (max-width: 1000px) {
@@ -100,6 +113,7 @@
 
 .checkout-header .checkout-header-right-section img {
   height: 32px;
+  filter: brightness(0) invert(1); /* ✅ Turn icons white for dark header */
 }
 
 @media (max-width: 1000px) {

@@ -1,46 +1,60 @@
+/* ===========================
+   🧭 HEADER BACKGROUND & LAYOUT (Updated to match Checkout)
+=========================== */
 .header {
-  background-color: rgb(8, 79, 45);
-  color: white;
-  padding-left: 15px;
-  padding-right: 15px;
-
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #0b0b2c; /* ✅ Dark navy background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* ✅ Consistent subtle shadow */
+  color: #ffffff; /* ✅ Light text */
+  flex-wrap: wrap;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  z-index: 1000;
 }
 
 .header .left-section {
-  width: 208px;
+  display: flex;
+  align-items: center;
+  width: 220px;
 }
 
 @media (max-width: 800px) {
   .header .left-section {
-    width: unset;
+    width: auto;
   }
 }
 
+/* ===========================
+   🔗 HEADER LINKS
+=========================== */
 .header .header-link {
   display: inline-block;
-  padding: 6px 9.5px;
-  border-radius: 2px;
+  padding: 6px 10px;
+  border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: 1px solid transparent;
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 
 .header .header-link:hover {
-  border: 1px solid white;
+  border-color: #4da3ff; /* ✅ Accent border */
+  color: #4da3ff; /* ✅ Accent blue on hover */
 }
 
+/* ===========================
+   🧭 LOGO STYLES
+=========================== */
 .header .logo {
-  height: 26px;
-  margin-top: 1px;
+  height: 28px;
+  margin-right: 8px;
 }
 
 .header .mobile-logo {
@@ -54,96 +68,146 @@
 
   .header .mobile-logo {
     display: block;
-    height: 26px;
-    margin-top: 1px;
+    height: 28px;
   }
 }
 
+/* ===========================
+   🔍 MIDDLE SECTION / SEARCH
+=========================== */
 .header .middle-section {
   flex: 1;
-  max-width: 850px;
-  margin-left: 10px;
-  margin-right: 10px;
+  max-width: 600px;
+  margin: 10px auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.header .search-bar {
+.search-bar {
   flex: 1;
-  width: 0;
-  font-size: 16px;
-  height: 38px;
-  padding-left: 15px;
+  min-width: 140px;
+  max-width: 300px;
+  padding: 8px 10px;
+  border: 1px solid #4da3ff; /* ✅ Accent border */
+  border-radius: 6px;
+  background: #ffffff;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.search-button {
+  background: none;
   border: none;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.header .search-button {
-  background-color: rgb(186, 255, 190);
-  border: none;
-  width: 45px;
-  height: 40px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  flex-shrink: 0;
-}
-
-.header .search-icon {
-  height: 20px;
-  margin-left: 0px;
-  margin-top: 3px;
-}
-
-.header .right-section {
-  width: 180px;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: end;
-}
-
-.header .orders-link {
-  color: white;
-
-  display: flex;
-  align-items: center;
-  padding-left: 13px;
-  padding-right: 13px;
-}
-
-.header .orders-text {
-  display: block;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.header .cart-link {
-  color: white;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.header .cart-icon {
-  width: 38px;
-}
-
-.header .cart-text {
+  cursor: pointer;
   margin-left: 5px;
-  font-size: 15px;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.header .cart-quantity {
-  color: rgb(8, 79, 45);
-  font-size: 14px;
-  font-weight: 700;
+/* ===========================
+   🎨 ICON COLORS (Inverted for dark bg)
+=========================== */
+.search-icon,
+.cart-icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1); /* ✅ Make icons white */
+  transition: filter 0.3s ease;
+}
 
+.search-button:hover .search-icon,
+.cart-link:hover .cart-icon {
+  filter: brightness(0) saturate(100%) invert(74%) sepia(24%) saturate(568%) hue-rotate(181deg) brightness(98%) contrast(95%);
+  /* ✅ Accent blue hover */
+}
+
+/* ===========================
+   🛒 RIGHT SECTION & CART
+=========================== */
+.header .right-section {
+  width: 200px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 675px) {
+  .header .right-section {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 16px;
+  }
+}
+
+/* Cart badge */
+.cart-quantity {
+  background-color: #e74c3c; /* ✅ Bright red badge */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
   position: absolute;
-  top: 8.5px;
-  right: 46px;
+  top: -5px;
+  right: -10px;
+}
 
-  width: 26px;
-  text-align: center;
+.cart-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+.orders-link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.orders-link:hover,
+.cart-link:hover {
+  color: #4da3ff; /* ✅ Accent blue */
+}
+
+/* ===========================
+   🟡 LOGO TEXT (Updated to match new theme)
+=========================== */
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff; /* ✅ Base white */
+  text-decoration: none;
+}
+
+.logo-text span {
+  color: #4da3ff; /* ✅ Accent blue */
+}
+
+/* ===========================
+   📱 SMALL SCREEN IMPROVEMENTS
+=========================== */
+@media (max-width: 500px) {
+  .header {
+    padding: 10px 16px;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .search-bar {
+    max-width: 200px;
+  }
+
+  .header .right-section {
+    flex-direction: row;
+  }
 }

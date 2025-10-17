@@ -1,14 +1,20 @@
 import React from "react";
 import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
-//import dayjs from "dayjs";
 import { DeliveryOptions } from "./DeliveryOptions";
+import axios from "axios";
 
 export function OrderSummery({ cart, deliveryOptions, loadCart }) {
   return (
     <div className="order-summary">
       {deliveryOptions.length > 0 &&
         cart.map((cartItem) => {
+          // ✅ Moved deleteCartItem function here (before return)
+          const deleteCartItem = async () => {
+            await axios.delete(`/api/cart-items/${cartItem.productId}`);
+            await loadCart();
+          };
+
           return (
             <div key={cartItem.productId} className="cart-item-container">
               <div className="delivery-date">
@@ -21,7 +27,11 @@ export function OrderSummery({ cart, deliveryOptions, loadCart }) {
               </div>
 
               <div className="cart-item-details-grid">
-                <img className="product-image" src={cartItem.product.image} />
+                <img
+                  className="product-image"
+                  src={cartItem.product.image}
+                  alt={cartItem.product.name}
+                />
 
                 <div className="cart-item-details">
                   <div className="product-name">{cartItem.product.name}</div>
@@ -39,7 +49,11 @@ export function OrderSummery({ cart, deliveryOptions, loadCart }) {
                     <span className="update-quantity-link link-primary">
                       Update
                     </span>
-                    <span className="delete-quantity-link link-primary">
+                    {/* ✅ Fixed the onClick handler */}
+                    <span
+                      className="delete-quantity-link link-primary"
+                      onClick={deleteCartItem}
+                    >
                       Delete
                     </span>
                   </div>

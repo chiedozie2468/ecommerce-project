@@ -4,6 +4,7 @@ import "./OrdersPage.css";
 import axios from "axios";
 import dayjs from "dayjs";
 import { formatMoney } from "../../utils/money";
+import { Link } from "react-router-dom"; 
 
 export function OrdersPage({ cart }) {
   const [orders, setOrders] = useState([]);
@@ -29,7 +30,7 @@ export function OrdersPage({ cart }) {
                   <div className="order-header-left-section">
                     <div className="order-date">
                       <div className="order-header-label">Order Placed:</div>
-                      <div>{dayjs(order.orderTimeMs).format("mmmm d")}</div>
+                      <div>{dayjs(order.orderTimeMs).format("MMMM D")}</div>
                     </div>
                     <div className="order-total">
                       <div className="order-header-label">Total:</div>
@@ -76,11 +77,11 @@ export function OrdersPage({ cart }) {
                         </div>
 
                         <div className="product-actions">
-                          <a href="/tracking">
+                          <Link to={`/track/${order.id}`}>
                             <button className="track-package-button button-secondary">
                               Track package
                             </button>
-                          </a>
+                          </Link>
                         </div>
                       </Fragment>
                     );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 export const AuthContext = React.createContext();
 
@@ -45,7 +45,7 @@ export default function AuthProvider({ children }) {
     return { success: true };
   }
 
-  
+
 
   function logout() {
     localStorage.removeItem("currentUserEmail");
@@ -64,4 +64,10 @@ export default function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
+}
+
+
+export function useAuth() {
+  const context = useContext(AuthContext)
+  return context;
 }

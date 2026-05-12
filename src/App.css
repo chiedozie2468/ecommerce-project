@@ -681,3 +681,99 @@ body {
     font-size: 2.3rem;
   }
 }
+/* =========================
+   PRODUCT DETAILS
+========================= */
+
+.product-detail {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+}
+
+.product-detail-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.product-detail-image img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.product-detail-info {
+  flex: 1;
+  min-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.product-detail-info h1 {
+  font-size: 2.2rem;
+  color: #0f172a;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.product-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.add-to-cart {
+  width: fit-content;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 2rem;
+  color: #2563eb;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .product-detail {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .product-detail-info h1 {
+    font-size: 1.8rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
+  }
+}

@@ -482,3 +482,202 @@ body {
     width: 100%;
   }
 }
+
+/* =========================
+   AUTH PAGE
+========================= */
+
+.auth-form {
+  width: 100%;
+  max-width: 500px;
+
+  margin: 2rem auto 0;
+
+  background: white;
+
+  padding: 2.5rem;
+
+  border-radius: 24px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+
+  margin-bottom: 0.7rem;
+
+  color: #334155;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 1rem;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 14px;
+
+  font-size: 1rem;
+
+  outline: none;
+
+  transition: 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.auth-form .btn {
+  width: 100%;
+
+  margin-top: 0.5rem;
+}
+
+.auth-switch {
+  text-align: center;
+
+  margin-top: 1.5rem;
+
+  font-size: 1rem;
+
+  color: #475569;
+}
+
+.auth-link {
+  color: #2563eb;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.auth-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .auth-form {
+    padding: 1.5rem;
+
+    border-radius: 18px;
+  }
+
+  .form-group input {
+    padding: 0.9rem;
+  }
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.error {
+  color: #dc2626;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  margin-top: 0.5rem;
+
+  display: block;
+}
+
+/* =========================
+   AUTH TITLE
+========================= */
+
+.page-title h1 {
+  font-size: 3rem;
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+/* =========================
+   AUTH CONTAINER SPACING
+========================= */
+
+.auth-switch p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.3rem;
+
+  flex-wrap: wrap;
+}
+
+/* =========================
+   INPUT PLACEHOLDER
+========================= */
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================
+   INPUT HOVER
+========================= */
+
+.form-group input:hover {
+  border-color: #94a3b8;
+}
+
+/* =========================
+   BUTTON ACTIVE EFFECT
+========================= */
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   AUTH FORM ANIMATION
+========================= */
+
+.auth-form {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE TITLE
+========================= */
+
+@media (max-width: 768px) {
+  .page-title h1 {
+    font-size: 2.3rem;
+  }
+}

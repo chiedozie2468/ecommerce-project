@@ -1,50 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { getProductById } from '../data/product';
-import '../App.css'
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getProductById } from "../data/product";
+import "../App.css";
+import { useCart } from "../context/CartContext";
 
 export default function ProductDetails() {
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const [product, setProduct] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(null);
+  const { addToCart, cartItems } = useCart();
 
-    useEffect(() => {
-        const foundProduct = getProductById(id); 
-        if (!foundProduct) {
-            navigate("/");
-            return;
-        }
-        setProduct(foundProduct);
-    }, [id, navigate]);
-
-    if (!product) {
-        return <h1 className="loading">Loading...</h1>;
+  useEffect(() => {
+    const foundProduct = getProductById(id);
+    if (!foundProduct) {
+      navigate("/");
+      return;
     }
+    setProduct(foundProduct);
+  }, [id, navigate]);
 
-    return (
-        <div className="page">
-            <div className="container">
-                <div className="product-detail">
-                    <div className="product-detail-image">
-                        <img
-                            src={product?.image}
-                            alt={product?.name}
-                        />
-                    </div>
-                    <div className="product-detail-info">
-                        <h1>{product?.name}</h1>
-                        <p className="price">
-                            ${product?.price}
-                        </p>
-                        <p className="product-description">{product.description}</p>
-                        <button className="add-to-cart">
-                            Add to Cart
-                        </button>
-                    </div>
+  if (!product) {
+    return <h1 className="loading">Loading...</h1>;
+  }
 
-                </div>
+  const productInCart = cartItems.find((item) => item.id === product?.id);
+  const productQuantityLabel = productInCart
+    ? `(${productInCart.quantity})`
+    : "";
 
-            </div>
+  return (
+    <div className="page">
+      <div className="container">
+        <div className="product-detail">
+          <div className="product-detail-image">
+            <img src={product?.image} alt={product?.name} />
+          </div>
+          <div className="product-detail-info">
+            <h1>{product?.name}</h1>
+            <p className="price">${product?.price}</p>
+            <p className="product-description">{product.description}</p>
+            <button
+              className="add-to-cart"
+              onClick={() => addToCart(product.id)}
+            >
+              Add to Cart
+              {productQuantityLabel}
+            </button>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
